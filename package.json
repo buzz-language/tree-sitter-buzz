@@ -1,0 +1,52 @@
+{
+  "name": "tree-sitter-buzz",
+  "version": "0.1.0",
+  "description": "Tree sitter parser for buzz",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buzz-language/tree-sitter-buzz.git"
+  },
+  "author": "giann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buzz-language/tree-sitter-buzz/issues"
+  },
+  "homepage": "https://github.com/buzz-language/tree-sitter-buzz#readme",
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8",
+    "prebuildify": "^6.0.0"
+  },
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "tree-sitter": [
+    {
+      "scope": "source.buzz",
+      "injection-regex": "^buzz$"
+    }
+  ]
+}
