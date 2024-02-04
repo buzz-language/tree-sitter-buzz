@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "buzz",
+      "camelcase": "buzz",
+      "scope": "source.buzz",
+      "file-types": [
+        "buzz"
+      ],
+      "injection-regex": "^buzz$",
+      "class-name": "TreeSitterBuzz",
+      "highlights": "queries/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "buzz",
+    "authors": [
+      {
+        "name": "Benoit Giannangeli",
+        "email": "giann008@gmail.com",
+        "url": "https://github.com/giann"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/buzz-language/tree-sitter-buzz",
+      "funding": "https://github.com/sponsors/giann"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": true
+  }
+}
