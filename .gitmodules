@@ -1,0 +1,3 @@
+[submodule "buzz"]
+	path = buzz
+	url = https://github.com/buzz-language/buzz
