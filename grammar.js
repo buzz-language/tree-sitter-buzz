@@ -732,6 +732,7 @@ function string_literal(delimiter) {
           new RustRegex('([^' + delimiter + '\\\\]|[\r\n])+'),
           choice(
             '\\n',
+            '\\r',
             '\\t',
             /\\[0-9]+/,
             '\\{',
@@ -754,6 +755,7 @@ function string($, delimiter) {
           new RustRegex('([^\\\\' + delimiter + '{]|[\r\n])+'),
           choice(
             '\\n',
+            '\\r',
             '\\t',
             /\\[0-9]+/,
             '\\{',

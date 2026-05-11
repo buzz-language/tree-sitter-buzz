@@ -1952,6 +1952,10 @@
     "named": false
   },
   {
+    "type": "\\r",
+    "named": false
+  },
+  {
     "type": "\\t",
     "named": false
   },

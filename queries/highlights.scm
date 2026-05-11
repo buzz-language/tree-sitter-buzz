@@ -130,6 +130,8 @@
   "return"
   "yield"
   "resume"
+  "out"
+  "resolve"
 ] @keyword.control.return
 
 [
