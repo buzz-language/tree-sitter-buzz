@@ -6,6 +6,12 @@
 (function_signature
   param_name: (identifier) @variable.parameter)
 
+(function_signature
+  "fun" @keyword.function)
+
+(function_type
+  "fun" @keyword.function)
+
 (object_declaration
   name: (identifier) @constructor)
 
@@ -35,7 +41,7 @@
 ] @constant.builtin
 
 [
-  ""
+  ","
   "."
   "\\"
   ";"
@@ -92,7 +98,6 @@
 ] @comment.block.documentation
 
 [
-  "fun"
   "test"
 ] @keyword.function
 
