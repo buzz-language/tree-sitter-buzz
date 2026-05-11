@@ -13,13 +13,13 @@
   "fun" @keyword.function)
 
 (object_declaration
-  name: (identifier) @constructor)
+  name: (identifier) @type)
 
 (object_declaration
   protocols: (identifier) @type)
 
 (protocol_declaration
-  name: (identifier) @constructor)
+  name: (identifier) @type)
 
 (enum_declaration
   name: (identifier) @type.enum)
@@ -27,9 +27,15 @@
 (object_init_expression
   name: (qualified_name) @constructor)
 
+(type
+  (qualified_name) @type)
+
 [
   "this"
 ] @variable.builtin
+
+((regular_identifier) @variable.builtin
+  (#eq? @variable.builtin "this"))
 
 [
   "true"

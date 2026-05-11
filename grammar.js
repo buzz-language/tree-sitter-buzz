@@ -17,6 +17,8 @@ const PREC = {
   PREFIX: 15,
 };
 
+const IDENTIFIER = /[a-zA-Z_][a-zA-Z0-9_]*/;
+
 module.exports = grammar({
   name: "buzz",
 
@@ -48,7 +50,7 @@ module.exports = grammar({
     double: (_) => /[0-9]+[0-9_]*\.[0-9][0-9_]*/,
     char: (_) => /'\\?.'/,
     free_identifier: (_) => seq('@"', /[^"]+/, '"'),
-    regular_identifier: (_) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    regular_identifier: (_) => IDENTIFIER,
     identifier: ($) => choice($.regular_identifier, $.free_identifier),
 
     string_literal: ($) => choice(string_literal('"'), string_literal("`")),
@@ -652,10 +654,12 @@ module.exports = grammar({
 
     qualified_name: ($) => seq(optional($.qualified), $.identifier),
 
-    qualified: ($) =>
-      prec.right(
-        PREC.TERM,
-        seq($.identifier, repeat(seq("\\", $.identifier)), "\\"),
+    qualified: (_) =>
+      token(
+        prec(
+          PREC.TERM,
+          seq(IDENTIFIER, repeat(seq("\\", IDENTIFIER)), "\\"),
+        ),
       ),
   },
 });

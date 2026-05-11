@@ -1291,21 +1291,6 @@
     }
   },
   {
-    "type": "qualified",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "qualified_name",
     "named": true,
     "fields": {},
@@ -2035,11 +2020,11 @@
   },
   {
     "type": "double",
-    "named": true
+    "named": false
   },
   {
     "type": "double",
-    "named": false
+    "named": true
   },
   {
     "type": "else",
@@ -2148,6 +2133,10 @@
   {
     "type": "protocol",
     "named": false
+  },
+  {
+    "type": "qualified",
+    "named": true
   },
   {
     "type": "regular_identifier",
