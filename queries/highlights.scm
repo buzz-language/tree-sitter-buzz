@@ -3,6 +3,17 @@
 (function_signature
   name: (identifier) @function)
 
+(call_expression
+  (expression
+    (variable_expression
+      (qualified_name
+        (identifier) @function))))
+
+(call_expression
+  (expression
+    (dot_expression
+      (identifier) @function)))
+
 (function_signature
   param_name: (identifier) @variable.parameter)
 
