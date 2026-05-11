@@ -53,7 +53,7 @@ module.exports = grammar({
     regular_identifier: (_) => IDENTIFIER,
     identifier: ($) => choice($.regular_identifier, $.free_identifier),
 
-    string_literal: ($) => choice(string_literal('"'), string_literal("`")),
+    string_literal: ($) => choice(string_literal($, '"'), string_literal($, "`")),
 
     string: ($) => choice(string($, '"'), string($, "`")),
 
@@ -672,49 +672,61 @@ function separated(rule, separator) {
   return seq(rule, optional(repeat(seq(separator, rule))));
 }
 
-function string_literal(delimiter) {
+function string_literal($, delimiter) {
   return seq(
-    delimiter,
+    alias(delimiter, $.string_delimiter),
     optional(
       repeat(
         choice(
-          new RustRegex("([^" + delimiter + "\\\\]|[\r\n])+"),
-          choice(
-            "\\n",
-            "\\r",
-            "\\t",
-            /\\[0-9]+/,
-            "\\{",
-            "\\\\",
-            seq("\\", delimiter),
+          alias(
+            new RustRegex("([^" + delimiter + "\\\\]|[\r\n])+"),
+            $.string_content,
+          ),
+          alias(
+            choice(
+              "\\n",
+              "\\r",
+              "\\t",
+              /\\[0-9]+/,
+              "\\{",
+              "\\\\",
+              seq("\\", delimiter),
+            ),
+            $.string_escape,
           ),
         ),
       ),
     ),
-    delimiter,
+    alias(delimiter, $.string_delimiter),
   );
 }
 
 function string($, delimiter) {
   return seq(
-    delimiter,
+    alias(delimiter, $.string_delimiter),
     optional(
       repeat(
         choice(
-          new RustRegex("([^\\\\" + delimiter + "{]|[\r\n])+"),
-          choice(
-            "\\n",
-            "\\r",
-            "\\t",
-            /\\[0-9]+/,
-            "\\{",
-            "\\\\",
-            seq("\\", delimiter),
+          alias(
+            new RustRegex("([^\\\\" + delimiter + "{]|[\r\n])+"),
+            $.string_content,
+          ),
+          alias(
+            choice(
+              "\\n",
+              "\\r",
+              "\\t",
+              /\\[0-9]+/,
+              "\\{",
+              "\\\\",
+              seq("\\", delimiter),
+            ),
+            $.string_escape,
           ),
           seq("{", $.expression, "}"),
         ),
       ),
     ),
-    delimiter,
+    alias(delimiter, $.string_delimiter),
   );
 }

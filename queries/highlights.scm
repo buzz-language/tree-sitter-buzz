@@ -60,7 +60,6 @@
 [
   ","
   "."
-  "\\"
   ";"
 ] @punctuation.delimiter
 
@@ -90,7 +89,9 @@
 
 [
   (char)
-  (string)
+  (string_content)
+  (string_delimiter)
+  (string_escape)
 ] @string
 
 [

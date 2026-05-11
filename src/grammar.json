@@ -121,8 +121,13 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "\""
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              },
+              "named": true,
+              "value": "string_delimiter"
             },
             {
               "type": "CHOICE",
@@ -133,50 +138,60 @@
                     "type": "CHOICE",
                     "members": [
                       {
-                        "type": "PATTERN",
-                        "value": "([^\"\\\\]|[\r\n])+"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "([^\"\\\\]|[\r\n])+"
+                        },
+                        "named": true,
+                        "value": "string_content"
                       },
                       {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": "\\n"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\r"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\t"
-                          },
-                          {
-                            "type": "PATTERN",
-                            "value": "\\\\[0-9]+"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\{"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\\\"
-                          },
-                          {
-                            "type": "SEQ",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": "\\"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "\""
-                              }
-                            ]
-                          }
-                        ]
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "STRING",
+                              "value": "\\n"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\r"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\t"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "\\\\[0-9]+"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\\"
+                            },
+                            {
+                              "type": "SEQ",
+                              "members": [
+                                {
+                                  "type": "STRING",
+                                  "value": "\\"
+                                },
+                                {
+                                  "type": "STRING",
+                                  "value": "\""
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "named": true,
+                        "value": "string_escape"
                       }
                     ]
                   }
@@ -187,8 +202,13 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "\""
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              },
+              "named": true,
+              "value": "string_delimiter"
             }
           ]
         },
@@ -196,8 +216,13 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "`"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "`"
+              },
+              "named": true,
+              "value": "string_delimiter"
             },
             {
               "type": "CHOICE",
@@ -208,50 +233,60 @@
                     "type": "CHOICE",
                     "members": [
                       {
-                        "type": "PATTERN",
-                        "value": "([^`\\\\]|[\r\n])+"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "([^`\\\\]|[\r\n])+"
+                        },
+                        "named": true,
+                        "value": "string_content"
                       },
                       {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": "\\n"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\r"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\t"
-                          },
-                          {
-                            "type": "PATTERN",
-                            "value": "\\\\[0-9]+"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\{"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\\\"
-                          },
-                          {
-                            "type": "SEQ",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": "\\"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "`"
-                              }
-                            ]
-                          }
-                        ]
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "STRING",
+                              "value": "\\n"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\r"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\t"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "\\\\[0-9]+"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\\"
+                            },
+                            {
+                              "type": "SEQ",
+                              "members": [
+                                {
+                                  "type": "STRING",
+                                  "value": "\\"
+                                },
+                                {
+                                  "type": "STRING",
+                                  "value": "`"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "named": true,
+                        "value": "string_escape"
                       }
                     ]
                   }
@@ -262,8 +297,13 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "`"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "`"
+              },
+              "named": true,
+              "value": "string_delimiter"
             }
           ]
         }
@@ -276,8 +316,13 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "\""
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              },
+              "named": true,
+              "value": "string_delimiter"
             },
             {
               "type": "CHOICE",
@@ -288,50 +333,60 @@
                     "type": "CHOICE",
                     "members": [
                       {
-                        "type": "PATTERN",
-                        "value": "([^\\\\\"{]|[\r\n])+"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "([^\\\\\"{]|[\r\n])+"
+                        },
+                        "named": true,
+                        "value": "string_content"
                       },
                       {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": "\\n"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\r"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\t"
-                          },
-                          {
-                            "type": "PATTERN",
-                            "value": "\\\\[0-9]+"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\{"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\\\"
-                          },
-                          {
-                            "type": "SEQ",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": "\\"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "\""
-                              }
-                            ]
-                          }
-                        ]
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "STRING",
+                              "value": "\\n"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\r"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\t"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "\\\\[0-9]+"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\\"
+                            },
+                            {
+                              "type": "SEQ",
+                              "members": [
+                                {
+                                  "type": "STRING",
+                                  "value": "\\"
+                                },
+                                {
+                                  "type": "STRING",
+                                  "value": "\""
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "named": true,
+                        "value": "string_escape"
                       },
                       {
                         "type": "SEQ",
@@ -359,8 +414,13 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "\""
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              },
+              "named": true,
+              "value": "string_delimiter"
             }
           ]
         },
@@ -368,8 +428,13 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "`"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "`"
+              },
+              "named": true,
+              "value": "string_delimiter"
             },
             {
               "type": "CHOICE",
@@ -380,50 +445,60 @@
                     "type": "CHOICE",
                     "members": [
                       {
-                        "type": "PATTERN",
-                        "value": "([^\\\\`{]|[\r\n])+"
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "([^\\\\`{]|[\r\n])+"
+                        },
+                        "named": true,
+                        "value": "string_content"
                       },
                       {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": "\\n"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\r"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\t"
-                          },
-                          {
-                            "type": "PATTERN",
-                            "value": "\\\\[0-9]+"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\{"
-                          },
-                          {
-                            "type": "STRING",
-                            "value": "\\\\"
-                          },
-                          {
-                            "type": "SEQ",
-                            "members": [
-                              {
-                                "type": "STRING",
-                                "value": "\\"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": "`"
-                              }
-                            ]
-                          }
-                        ]
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "STRING",
+                              "value": "\\n"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\r"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\t"
+                            },
+                            {
+                              "type": "PATTERN",
+                              "value": "\\\\[0-9]+"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\\"
+                            },
+                            {
+                              "type": "SEQ",
+                              "members": [
+                                {
+                                  "type": "STRING",
+                                  "value": "\\"
+                                },
+                                {
+                                  "type": "STRING",
+                                  "value": "`"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "named": true,
+                        "value": "string_escape"
                       },
                       {
                         "type": "SEQ",
@@ -451,8 +526,13 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "`"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "`"
+              },
+              "named": true,
+              "value": "string_delimiter"
             }
           ]
         }
