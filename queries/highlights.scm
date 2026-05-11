@@ -36,7 +36,7 @@
   name: (identifier) @type.enum)
 
 (object_init_expression
-  name: (qualified_name) @constructor)
+  name: (qualified_name) @type)
 
 (type
   (qualified_name) @type)
@@ -89,6 +89,7 @@
 ] @keyword.control.conditional
 
 [
+  (char)
   (string)
 ] @string
 
