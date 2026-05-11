@@ -35,6 +35,8 @@
 (enum_declaration
   name: (identifier) @type.enum)
 
+(generic_type) @type
+
 (object_init_expression
   name: (qualified_name) @type)
 

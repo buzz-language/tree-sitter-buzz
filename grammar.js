@@ -401,7 +401,7 @@ module.exports = grammar({
       seq(
         "fun",
         optional(field("name", $.identifier)),
-        optional(seq("::<", comma_separated($.identifier), ">")),
+        optional($.generic_parameters),
         "(",
         optional(
           comma_separated(
@@ -451,6 +451,10 @@ module.exports = grammar({
 
     arrow_fun_declaration: ($) => seq($.function_signature, "=>", $.expression),
 
+    generic_parameters: ($) => seq("::<", comma_separated($.generic_type), ">"),
+
+    generic_type: ($) => $.identifier,
+
     object_declaration: ($) =>
       seq(
         "object",
@@ -458,7 +462,7 @@ module.exports = grammar({
           field("protocols", seq("<", comma_separated($.identifier), ">")),
         ),
         field("name", $.identifier),
-        optional(seq("::<", comma_separated($.identifier), ">")),
+        optional($.generic_parameters),
         "{",
         optional(repeat($.object_field)),
         "}",

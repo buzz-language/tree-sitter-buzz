@@ -677,7 +677,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "generic_parameters",
           "named": true
         },
         {
@@ -705,6 +705,36 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "generic_parameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "generic_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "generic_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -1103,7 +1133,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "generic_parameters",
           "named": true
         },
         {
@@ -2022,11 +2052,11 @@
   },
   {
     "type": "double",
-    "named": true
+    "named": false
   },
   {
     "type": "double",
-    "named": false
+    "named": true
   },
   {
     "type": "else",
