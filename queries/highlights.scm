@@ -153,6 +153,8 @@
 ] @keyword.control.repeat
 
 [
+  "break"
+  "continue"
   "return"
   "yield"
   "resume"
