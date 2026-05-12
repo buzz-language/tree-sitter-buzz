@@ -48,7 +48,20 @@ module.exports = grammar({
     binary: (_) => /0b[0-1]+[0-1_]*/,
     hexa: (_) => /0x[a-fA-F0-9]+[a-fA-F0-9_]*/,
     double: (_) => /[0-9]+[0-9_]*\.[0-9][0-9_]*/,
-    char: (_) => /'\\?.'/,
+    char: (_) =>
+      token(
+        seq(
+          "'",
+          choice(
+            /[^'\\\n]/,
+            seq(
+              "\\",
+              choice("0", "a", "b", "f", "n", "r", "t", "v", "\\", "'", '"'),
+            ),
+          ),
+          "'",
+        ),
+      ),
     free_identifier: (_) => seq('@"', /[^"]+/, '"'),
     regular_identifier: (_) => IDENTIFIER,
     identifier: ($) => choice($.regular_identifier, $.free_identifier),
@@ -676,6 +689,24 @@ function separated(rule, separator) {
   return seq(rule, optional(repeat(seq(separator, rule))));
 }
 
+function string_escape(delimiter) {
+  return choice(
+    "\\a",
+    "\\b",
+    "\\f",
+    "\\n",
+    "\\r",
+    "\\t",
+    "\\v",
+    /\\[0-9]+/,
+    "\\{",
+    "\\'",
+    '\\"',
+    "\\\\",
+    seq("\\", delimiter),
+  );
+}
+
 function string_literal($, delimiter) {
   return seq(
     alias(delimiter, $.string_delimiter),
@@ -687,15 +718,7 @@ function string_literal($, delimiter) {
             $.string_content,
           ),
           alias(
-            choice(
-              "\\n",
-              "\\r",
-              "\\t",
-              /\\[0-9]+/,
-              "\\{",
-              "\\\\",
-              seq("\\", delimiter),
-            ),
+            string_escape(delimiter),
             $.string_escape,
           ),
         ),
@@ -716,15 +739,7 @@ function string($, delimiter) {
             $.string_content,
           ),
           alias(
-            choice(
-              "\\n",
-              "\\r",
-              "\\t",
-              /\\[0-9]+/,
-              "\\{",
-              "\\\\",
-              seq("\\", delimiter),
-            ),
+            string_escape(delimiter),
             $.string_escape,
           ),
           seq("{", $.expression, "}"),

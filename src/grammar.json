@@ -77,8 +77,87 @@
       "value": "[0-9]+[0-9_]*\\.[0-9][0-9_]*"
     },
     "char": {
-      "type": "PATTERN",
-      "value": "'\\\\?.'"
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "'"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^'\\\\\\n]"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "\\"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "0"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "a"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "b"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "f"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "n"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "r"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "t"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "v"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\\"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "'"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "\""
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "'"
+          }
+        ]
+      }
     },
     "free_identifier": {
       "type": "SEQ",
@@ -153,6 +232,18 @@
                           "members": [
                             {
                               "type": "STRING",
+                              "value": "\\a"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\b"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\f"
+                            },
+                            {
+                              "type": "STRING",
                               "value": "\\n"
                             },
                             {
@@ -164,12 +255,24 @@
                               "value": "\\t"
                             },
                             {
+                              "type": "STRING",
+                              "value": "\\v"
+                            },
+                            {
                               "type": "PATTERN",
                               "value": "\\\\[0-9]+"
                             },
                             {
                               "type": "STRING",
                               "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\'"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\""
                             },
                             {
                               "type": "STRING",
@@ -248,6 +351,18 @@
                           "members": [
                             {
                               "type": "STRING",
+                              "value": "\\a"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\b"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\f"
+                            },
+                            {
+                              "type": "STRING",
                               "value": "\\n"
                             },
                             {
@@ -259,12 +374,24 @@
                               "value": "\\t"
                             },
                             {
+                              "type": "STRING",
+                              "value": "\\v"
+                            },
+                            {
                               "type": "PATTERN",
                               "value": "\\\\[0-9]+"
                             },
                             {
                               "type": "STRING",
                               "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\'"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\""
                             },
                             {
                               "type": "STRING",
@@ -348,6 +475,18 @@
                           "members": [
                             {
                               "type": "STRING",
+                              "value": "\\a"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\b"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\f"
+                            },
+                            {
+                              "type": "STRING",
                               "value": "\\n"
                             },
                             {
@@ -359,12 +498,24 @@
                               "value": "\\t"
                             },
                             {
+                              "type": "STRING",
+                              "value": "\\v"
+                            },
+                            {
                               "type": "PATTERN",
                               "value": "\\\\[0-9]+"
                             },
                             {
                               "type": "STRING",
                               "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\'"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\""
                             },
                             {
                               "type": "STRING",
@@ -460,6 +611,18 @@
                           "members": [
                             {
                               "type": "STRING",
+                              "value": "\\a"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\b"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\f"
+                            },
+                            {
+                              "type": "STRING",
                               "value": "\\n"
                             },
                             {
@@ -471,12 +634,24 @@
                               "value": "\\t"
                             },
                             {
+                              "type": "STRING",
+                              "value": "\\v"
+                            },
+                            {
                               "type": "PATTERN",
                               "value": "\\\\[0-9]+"
                             },
                             {
                               "type": "STRING",
                               "value": "\\{"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\'"
+                            },
+                            {
+                              "type": "STRING",
+                              "value": "\\\""
                             },
                             {
                               "type": "STRING",
