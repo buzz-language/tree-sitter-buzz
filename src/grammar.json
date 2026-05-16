@@ -913,7 +913,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "anonymous_object_init"
+          "name": "anonymous_dot_expression"
         },
         {
           "type": "SYMBOL",
@@ -1047,7 +1047,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "anonymous_object_init"
+          "name": "anonymous_dot_expression"
         },
         {
           "type": "SYMBOL",
@@ -1283,6 +1283,19 @@
         }
       ]
     },
+    "anonymous_dot_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "anonymous_object_init"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "anonymous_enum_case"
+        }
+      ]
+    },
     "async_call": {
       "type": "PREC",
       "value": 15,
@@ -1411,6 +1424,26 @@
             "name": "identifier"
           }
         ]
+      }
+    },
+    "anonymous_enum_case": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 14,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "."
+            },
+            {
+              "type": "PATTERN",
+              "value": "[a-zA-Z_][a-zA-Z0-9_]*"
+            }
+          ]
+        }
       }
     },
     "do_until_statement": {

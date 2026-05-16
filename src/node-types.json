@@ -15,6 +15,25 @@
     }
   },
   {
+    "type": "anonymous_dot_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "anonymous_enum_case",
+          "named": true
+        },
+        {
+          "type": "anonymous_object_init",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "anonymous_object_init",
     "named": true,
     "fields": {},
@@ -399,7 +418,7 @@
           "named": true
         },
         {
-          "type": "anonymous_object_init",
+          "type": "anonymous_dot_expression",
           "named": true
         },
         {
@@ -947,7 +966,7 @@
           "named": true
         },
         {
-          "type": "anonymous_object_init",
+          "type": "anonymous_dot_expression",
           "named": true
         },
         {
@@ -2003,6 +2022,10 @@
   {
     "type": "and",
     "named": false
+  },
+  {
+    "type": "anonymous_enum_case",
+    "named": true
   },
   {
     "type": "any",

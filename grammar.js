@@ -110,7 +110,7 @@ module.exports = grammar({
     lone_expression: ($) =>
       choice(
         $.and,
-        $.anonymous_object_init,
+        $.anonymous_dot_expression,
         $.async_call,
         $.binary_expression,
         $.block_expression,
@@ -145,7 +145,7 @@ module.exports = grammar({
     expression: ($) =>
       choice(
         $.and,
-        $.anonymous_object_init,
+        $.anonymous_dot_expression,
         $.async_call,
         $.binary_expression,
         $.block_expression,
@@ -191,6 +191,9 @@ module.exports = grammar({
         "}",
       ),
 
+    anonymous_dot_expression: ($) =>
+      choice($.anonymous_object_init, $.anonymous_enum_case),
+
     async_call: ($) => prec(PREC.PREFIX, seq("&", $.call_expression)),
 
     block_expression: ($) => seq("from", $.block),
@@ -203,6 +206,9 @@ module.exports = grammar({
 
     dot_expression: ($) =>
       prec.left(PREC.CALL, seq($.expression, ".", $.identifier)),
+
+    anonymous_enum_case: (_) =>
+      token(prec(PREC.PRIMARY, seq(".", IDENTIFIER))),
 
     do_until_statement: ($) =>
       seq("do", $.block, "until", "(", $.expression, ")"),

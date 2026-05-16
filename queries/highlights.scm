@@ -35,6 +35,8 @@
 (enum_declaration
   name: (identifier) @type.enum)
 
+(anonymous_enum_case) @constant
+
 (generic_type) @type
 
 (object_init_expression
