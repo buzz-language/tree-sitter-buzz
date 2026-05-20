@@ -45,6 +45,10 @@
 (type
   (qualified_name) @type)
 
+(type_expression
+  "<" @punctuation.bracket
+  ">" @punctuation.bracket)
+
 [
   "this"
 ] @variable.builtin
@@ -86,6 +90,7 @@
 [
   "if"
   "else"
+  "match"
   "?"
   "??"
   "is"
@@ -204,6 +209,7 @@
   ">>="
   "<<"
   ".."
+  "->"
   "typeof"
   "=>"
 ] @operator

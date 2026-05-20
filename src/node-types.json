@@ -486,6 +486,10 @@
           "named": true
         },
         {
+          "type": "match_expression",
+          "named": true
+        },
+        {
           "type": "object_init_expression",
           "named": true
         },
@@ -1026,6 +1030,10 @@
           "named": true
         },
         {
+          "type": "match_expression",
+          "named": true
+        },
+        {
           "type": "object_init_expression",
           "named": true
         },
@@ -1090,6 +1098,177 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "match_block_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "conditions": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "match_conditions",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "match_block_else_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "match_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "conditions": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "match_conditions",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "match_conditions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "match_else_branch",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "match_expression",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "match_branch",
+          "named": true
+        },
+        {
+          "type": "match_else_branch",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "match_statement",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "match_block_branch",
+          "named": true
+        },
+        {
+          "type": "match_block_else_branch",
+          "named": true
+        },
+        {
+          "type": "match_branch",
+          "named": true
+        },
+        {
+          "type": "match_else_branch",
+          "named": true
+        },
+        {
+          "type": "match_expression",
           "named": true
         }
       ]
@@ -1487,6 +1666,10 @@
         },
         {
           "type": "import_statement",
+          "named": true
+        },
+        {
+          "type": "match_statement",
           "named": true
         },
         {
@@ -2075,11 +2258,11 @@
   },
   {
     "type": "double",
-    "named": false
+    "named": true
   },
   {
     "type": "double",
-    "named": true
+    "named": false
   },
   {
     "type": "else",
@@ -2151,6 +2334,10 @@
   },
   {
     "type": "is",
+    "named": false
+  },
+  {
+    "type": "match",
     "named": false
   },
   {

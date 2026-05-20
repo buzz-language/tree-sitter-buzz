@@ -27,6 +27,9 @@ module.exports = grammar({
     [$.declaration, $.expression],
     [$.argument_list],
     [$.block, $.map_expression],
+    [$.expression, $.match_statement],
+    [$._match_statement, $.match_expression, $._match_statement_branches],
+    [$._match_statement_branches],
   ],
 
   extras: ($) => [/[\n]/, /\s/, $.comment, $.doc_comment],
@@ -95,6 +98,7 @@ module.exports = grammar({
         $.for_statement,
         $.foreach_statement,
         $.if_statement,
+        $.match_statement,
         $.import_statement,
         $.out_statement,
         $.return_statement,
@@ -126,6 +130,7 @@ module.exports = grammar({
         $.string,
         $.pattern,
         $.map_expression,
+        $.match_expression,
         $.object_init_expression,
         $.or_expression,
         $.range_expression,
@@ -161,6 +166,7 @@ module.exports = grammar({
         $.string,
         $.pattern,
         $.map_expression,
+        $.match_expression,
         $.object_init_expression,
         $.or_expression,
         $.range_expression,
@@ -305,6 +311,98 @@ module.exports = grammar({
         ),
         "}",
       ),
+
+    match_statement: ($) => choice($.match_expression, $._match_statement),
+
+    _match_statement: ($) =>
+      seq(
+        "match",
+        "(",
+        field("value", $.expression),
+        ")",
+        "{",
+        choice(
+          seq(
+            $._match_statement_branches,
+            optional(seq(",", $._match_statement_else_branch)),
+            optional(","),
+          ),
+          seq(
+            comma_separated($.match_branch),
+            ",",
+            $.match_block_else_branch,
+            optional(","),
+          ),
+          seq($.match_block_else_branch, optional(",")),
+        ),
+        "}",
+      ),
+
+    match_expression: ($) =>
+      seq(
+        "match",
+        "(",
+        field("value", $.expression),
+        ")",
+        "{",
+        optional(
+          choice(
+            seq(
+              comma_separated($.match_branch),
+              optional(seq(",", $.match_else_branch)),
+              optional(","),
+            ),
+            seq($.match_else_branch, optional(",")),
+          ),
+        ),
+        "}",
+      ),
+
+    match_branch: ($) =>
+      seq(
+        field("conditions", $.match_conditions),
+        "->",
+        field("body", $.expression),
+      ),
+
+    match_else_branch: ($) =>
+      prec.dynamic(
+        2,
+        prec(2, seq("else", "->", field("body", $.expression))),
+      ),
+
+    _match_statement_branch: ($) => choice($.match_block_branch, $.match_branch),
+
+    _match_statement_else_branch: ($) =>
+      choice($.match_block_else_branch, $.match_else_branch),
+
+    _match_statement_branches: ($) =>
+      seq(
+        repeat(seq($.match_branch, ",")),
+        $.match_block_branch,
+        repeat(seq(",", $._match_statement_branch)),
+      ),
+
+    match_block_branch: ($) =>
+      prec.dynamic(
+        1,
+        prec(
+          1,
+          seq(
+            field("conditions", $.match_conditions),
+            "->",
+            field("body", $.block),
+          ),
+        ),
+      ),
+
+    match_block_else_branch: ($) =>
+      prec.dynamic(
+        3,
+        prec(2, seq("else", "->", field("body", $.block))),
+      ),
+
+    match_conditions: ($) => comma_separated($.expression),
 
     or_expression: ($) =>
       prec.left(PREC.OR, seq($.expression, "or", $.expression)),
