@@ -179,6 +179,7 @@
   "and"
   "or"
   "as"
+  "typeof"
 ] @keyword.control.operator
 
 [
@@ -210,7 +211,6 @@
   "<<"
   ".."
   "->"
-  "typeof"
   "=>"
 ] @operator
 

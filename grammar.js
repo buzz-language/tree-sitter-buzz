@@ -193,7 +193,7 @@ module.exports = grammar({
         optional("mut"),
         ".",
         "{",
-        optional(comma_separated($.var_declaration)),
+        optional(seq(comma_separated($.var_declaration), optional(","))),
         "}",
       ),
 
@@ -740,9 +740,10 @@ module.exports = grammar({
         seq(
           $.expression,
           optional(seq("::<", comma_separated($.type), ">")),
-          "(",
-          optional(seq($.argument_list, optional(","))),
-          ")",
+          choice(
+            seq("(", optional(seq($.argument_list, optional(","))), ")"),
+            $.anonymous_object_init,
+          ),
           optional(seq("catch", $.expression)),
         ),
       ),

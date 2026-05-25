@@ -208,6 +208,10 @@
       "required": true,
       "types": [
         {
+          "type": "anonymous_object_init",
+          "named": true
+        },
+        {
           "type": "argument_list",
           "named": true
         },
