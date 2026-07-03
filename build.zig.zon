@@ -1,10 +1,14 @@
 .{
-    .name = "tree-sitter-buzz",
+    .name = .tree_sitter_buzz,
     .version = "0.1.0",
-    .dependencies = .{ .@"tree-sitter" = .{
-        .url = "https://github.com/tree-sitter/zig-tree-sitter/archive/refs/tags/v0.25.0.tar.gz",
-        .hash = "12201a8d5e840678bbbf5128e605519c4024af422295d68e2ba2090e675328e5811d",
-    } },
+    .fingerprint = 0x502e8f86e241846e,
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{
+        .tree_sitter = .{
+            .url = "https://github.com/tree-sitter/zig-tree-sitter/archive/refs/tags/v0.26.0.tar.gz",
+            .hash = "tree_sitter-0.26.0-8heIf3CaAQDeVTQc0DMSBhbQAEx5aF-dTen4_LPxMgrv",
+        },
+    },
     .paths = .{
         "build.zig",
         "build.zig.zon",
