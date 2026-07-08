@@ -273,7 +273,7 @@ module.exports = grammar({
       prec.left(PREC.IS_AS, seq($.expression, "is", $.type)),
 
     as_expression: ($) =>
-      prec.left(PREC.IS_AS, seq($.expression, "as", optional("?"), $.type)),
+      prec.left(PREC.IS_AS, seq($.expression, choice("as", "as?", "as!"), $.type)),
 
     list_expression: ($) =>
       seq(

@@ -2223,6 +2223,14 @@
     "named": false
   },
   {
+    "type": "as!",
+    "named": false
+  },
+  {
+    "type": "as?",
+    "named": false
+  },
+  {
     "type": "binary",
     "named": true
   },

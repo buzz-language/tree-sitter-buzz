@@ -1942,18 +1942,19 @@
             "name": "expression"
           },
           {
-            "type": "STRING",
-            "value": "as"
-          },
-          {
             "type": "CHOICE",
             "members": [
               {
                 "type": "STRING",
-                "value": "?"
+                "value": "as"
               },
               {
-                "type": "BLANK"
+                "type": "STRING",
+                "value": "as?"
+              },
+              {
+                "type": "STRING",
+                "value": "as!"
               }
             ]
           },

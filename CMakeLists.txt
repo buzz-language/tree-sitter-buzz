@@ -49,9 +49,8 @@ configure_file(bindings/c/tree-sitter-buzz.pc.in
 
 include(GNUInstallDirs)
 
-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree_sitter"
-        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-        FILES_MATCHING PATTERN "*.h")
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree-sitter-buzz.h"
+        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/tree_sitter")
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-buzz.pc"
         DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig")
 install(TARGETS tree-sitter-buzz
